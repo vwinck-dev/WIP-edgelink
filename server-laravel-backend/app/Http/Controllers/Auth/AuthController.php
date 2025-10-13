@@ -3,15 +3,18 @@
 declare(strict_types = 1);
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Abstracts\Controllers\Auth\AuthAbstract;
+use App\Contracts\Contracts\Auth\AuthInterface;
+use Illuminate\View\View;
 
-final class AuthController extends Controller
+final class AuthController extends AuthAbstract implements AuthInterface
 {
-    public function index(string $path = 'login'): void {}
-
-    public function login(string $authMethod = 'sanctum'): void {}
-
-    public function logout(): void {}
-
-    public function register(): void {}
+    public function index(?string $path = 'login'): View
+    {
+        return match($path) {
+            'login'    => view(view: 'auth.login'),
+            'register' => view(view: 'auth.register'),
+            default    => view(view: 'auth.login'),
+        };
+    }
 }
