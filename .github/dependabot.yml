@@ -1,0 +1,30 @@
+version: 2
+updates:
+  # === PHP / Laravel Backend ===
+  - package-ecosystem: "composer"
+    directories:
+      - "/server-laravel-backend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    rebase-strategy: "auto"
+    allow:
+      - dependency-type: "all"
+    labels:
+      - "dependencies"
+      - "composer"
+    commit-message:
+      prefix: "[composer]"
+      include: "scope"
+
+  - package-ecosystem: "npm"
+    directories:
+      - "/server-laravel-backend"
+    schedule:
+       interval: "weekly"
+    labels:
+       - "dependencies"
+       - "npm"
+    commit-message:
+      prefix: "[npm]"
+      include: "scope"
