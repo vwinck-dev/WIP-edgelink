@@ -1,0 +1,6 @@
+#!/bin/sh
+wsl
+cd server-laravel-backend || exit 1
+
+./vendor/bin/pint
+./vendor/bin/phpstan analyse --memory-limit=2G

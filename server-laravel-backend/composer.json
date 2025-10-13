@@ -40,7 +40,6 @@
             "@php artisan migrate --force",
             "npm install",
             "npm run build"
-            "npx "
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
